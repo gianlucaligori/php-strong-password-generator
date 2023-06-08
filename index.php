@@ -15,6 +15,7 @@
     <html>
 
     <body>
+        <!-- FORM -->
         <div class="container">
             <h1>Generatore di password</h1>
             <form method="GET">
@@ -24,25 +25,17 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Genera password</button>
             </form>
+            <!-- FINE FORM -->
+
+
+            <!-- INIZIO LOGICA PHP -->
+
             <?php
+            include 'functions.php';
             if (isset($_GET['length'])) {
                 $length = $_GET['length'];
                 $password = generatePassword($length);
                 echo '<div class="mt-4">Password generata: <strong>' . $password . '</strong></div>';
-            }
-
-            function generatePassword($length)
-            {
-                $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_';
-                $password = '';
-                $char_length = strlen($characters);
-
-                for ($i = 0; $i < $length; $i++) {
-                    $random_index = rand(0, $char_length - 1);
-                    $password .= $characters[$random_index];
-                }
-
-                return $password;
             }
             ?>
         </div>
