@@ -16,28 +16,34 @@
 
     <body>
         <!-- FORM -->
-        <div class="container">
-            <h1>Generatore di password</h1>
-            <form method="GET">
-                <div class="form-group">
-                    <label for="length">Lunghezza password:</label>
-                    <input type="number" class="form-control" name="length" id="length" min="8" max="20" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Genera password</button>
-            </form>
-            <!-- FINE FORM -->
+
+        <div class="container mt-5 bg-primary">
+
+            <div class="blu">
+                <h1 class="text-center text-light">Strong Password Generator</h1>
+                <h2 class="text-center text-dark">Genera una password sicura</h2>
+
+                <form method="GET">
+                    <div class="form-group">
+                        <label for="length">Lunghezza password:</label>
+                        <input placeholder="Inserisci numero da 8 a 20" type="number" class="form-control" name="length" id="length" min="8" max="20" required>
+                    </div>
+                    <button type="submit" class="btn btn-warning mt-4">Genera password</button>
+                </form>
+                <!-- FINE FORM -->
 
 
-            <!-- INIZIO LOGICA PHP -->
+                <!-- INIZIO LOGICA PHP -->
+                <?php
+                include 'functions.php';
 
-            <?php
-            include 'functions.php';
-            if (isset($_GET['length'])) {
-                $length = $_GET['length'];
-                $password = generatePassword($length);
-                echo '<div class="mt-4">Password generata: <strong>' . $password . '</strong></div>';
-            }
-            ?>
+                if (isset($_GET['length'])) {
+                    $length = $_GET['length'];
+                    $password = generatePassword($length);
+                    echo '<div class="mt-4">Password generata: <strong>' . $password . '</strong></div>';
+                }
+                ?>
+            </div>
         </div>
     </body>
 
