@@ -11,6 +11,36 @@
 </head>
 
 <body>
+    <!DOCTYPE html>
+    <html>
+
+    <body>
+        <div class="container mt-5">
+            <h1>Generatore di password</h1>
+            <form>
+                <div class="form-group">
+                    <label for="length">Lunghezza password:</label>
+                    <input type="number" class="form-control" id="length" min="6" max="20" required>
+                </div>
+                <div class="form-group">
+                    <label for="uppercase">Includi lettere maiuscole:</label>
+                    <input type="checkbox" class="form-check-input" id="uppercase">
+                </div>
+                <div class="form-group">
+                    <label for="numbers">Includi numeri:</label>
+                    <input type="checkbox" class="form-check-input" id="numbers">
+                </div>
+                <div class="form-group">
+                    <label for="symbols">Includi simboli:</label>
+                    <input type="checkbox" class="form-check-input" id="symbols">
+                </div>
+                <button type="submit" class="btn btn-primary">Genera password</button>
+            </form>
+            <div id="password"></div>
+        </div>
+    </body>
+
+    </html>
 
 </body>
 
