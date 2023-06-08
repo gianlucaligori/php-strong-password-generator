@@ -15,33 +15,37 @@
     <html>
 
     <body>
-        <div class="container mt-5">
+        <div class="container">
             <h1>Generatore di password</h1>
-            <form>
+            <form method="GET">
                 <div class="form-group">
                     <label for="length">Lunghezza password:</label>
-                    <input type="number" class="form-control" id="length" min="6" max="20" required>
-                </div>
-                <div class="form-group">
-                    <label for="uppercase">Includi lettere maiuscole:</label>
-                    <input type="checkbox" class="form-check-input" id="uppercase">
-                </div>
-                <div class="form-group">
-                    <label for="numbers">Includi numeri:</label>
-                    <input type="checkbox" class="form-check-input" id="numbers">
-                </div>
-                <div class="form-group">
-                    <label for="symbols">Includi simboli:</label>
-                    <input type="checkbox" class="form-check-input" id="symbols">
+                    <input type="number" class="form-control" name="length" id="length" min="8" max="20" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Genera password</button>
             </form>
-            <div id="password"></div>
+            <?php
+            if (isset($_GET['length'])) {
+                $length = $_GET['length'];
+                $password = generatePassword($length);
+                echo '<div class="mt-4">Password generata: <strong>' . $password . '</strong></div>';
+            }
+
+            function generatePassword($length)
+            {
+                $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_';
+                $password = '';
+                $char_length = strlen($characters);
+
+                for ($i = 0; $i < $length; $i++) {
+                    $random_index = rand(0, $char_length - 1);
+                    $password .= $characters[$random_index];
+                }
+
+                return $password;
+            }
+            ?>
         </div>
     </body>
 
     </html>
-
-</body>
-
-</html>
